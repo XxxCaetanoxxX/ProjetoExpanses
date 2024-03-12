@@ -20,13 +20,16 @@ class AdaptativeButton extends StatelessWidget {
             color: Theme.of(context).colorScheme.primary,
             padding: EdgeInsets.symmetric(horizontal: 20),
           )
-        : FloatingActionButton(
-            backgroundColor: Theme.of(context).colorScheme.primary,
-            child: Text(
-              label,
-              style: TextStyle(color: Colors.amber),
+        : Container(
+            width: MediaQuery.of(context).size.width * 0.30,
+            child: FloatingActionButton(
+              backgroundColor: Theme.of(context).colorScheme.primary,
+              child: Text(
+                label,
+                style: TextStyle(color: Colors.white),
+              ),
+              onPressed: onPressed,
             ),
-            onPressed: onPressed,
           );
   }
 }

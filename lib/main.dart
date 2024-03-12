@@ -6,7 +6,6 @@ import 'package:flutter/material.dart';
 import './components/transaction_form.dart';
 import './components/transaction_list.dart';
 import 'models/transaction.dart';
-import 'components/chart.dart';
 
 main() => runApp(ExpensesApp());
 
@@ -14,9 +13,11 @@ class ExpensesApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final ThemeData tema = ThemeData();
+
     //SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
 
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       home: MyHomePage(),
       theme: tema.copyWith(
         colorScheme: tema.colorScheme.copyWith(
@@ -107,14 +108,15 @@ class _MyHomePageState extends State<MyHomePage> {
         Platform.isIOS ? CupertinoIcons.refresh : Icons.show_chart;
 
     final actions = <Widget>[
-      _getIconButton(
-        _showShart ? iconList : chartList,
-        () {
-          setState(() {
-            _showShart = !_showShart;
-          });
-        },
-      ),
+      if (isLandscape)
+        _getIconButton(
+          _showShart ? iconList : chartList,
+          () {
+            setState(() {
+              _showShart = !_showShart;
+            });
+          },
+        ),
       _getIconButton(
         Platform.isIOS ? CupertinoIcons.add : Icons.add,
         () => _openTransactionFormModal(context),
