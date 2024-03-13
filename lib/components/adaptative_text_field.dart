@@ -33,7 +33,7 @@ class AdaptativeTextField extends StatelessWidget {
             keyboardType: keyboardType,
             onSubmitted: onSubmitted,
             decoration: InputDecoration(
-              labelText: 'Valor (R\$)',
+              labelText: label,
             ),
           );
   }
